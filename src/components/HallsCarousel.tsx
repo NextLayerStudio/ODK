@@ -1,57 +1,54 @@
-"use client";
-
 import Link from "next/link";
-import { useRef } from "react";
 import { IconArrowRight } from "@/components/icons";
-import { Placeholder } from "@/components/Placeholder";
-import { BrandButton, Container } from "@/components/ui";
+import { Photo } from "@/components/Photo";
+import { Container } from "@/components/ui";
 import { halls } from "@/data/halls";
 
 export function HallsCarousel() {
-  const scroller = useRef<HTMLDivElement>(null);
-
-  function scroll(direction: 1 | -1) {
-    scroller.current?.scrollBy({ left: direction * 280, behavior: "smooth" });
-  }
-
   return (
-    <section className="bg-ink py-14 text-white md:py-16">
+    <section id="priestory" className="scroll-mt-24 bg-ink py-14 text-white md:py-20">
       <Container>
-        <h2 className="font-display text-center text-[32px] md:text-[40px]">Naše priestory</h2>
-        <div className="relative mt-8">
-          <div
-            ref={scroller}
-            className="flex snap-x gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-4 md:overflow-visible [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          >
-            {halls.map((hall) => (
-              <Link
-                key={hall.slug}
-                href={`/prenajom/${hall.slug}`}
-                className="relative h-[240px] w-[min(78vw,260px)] shrink-0 snap-start overflow-hidden rounded-xl md:h-[220px] md:w-auto"
-              >
-                <Placeholder tone="photo" />
-                <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/75 to-transparent px-3 py-3">
-                  <span className="text-sm">{hall.name}</span>
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/40">
-                    <IconArrowRight className="h-3.5 w-3.5" />
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <button
-            type="button"
-            aria-label="Ďalšie priestory"
-            onClick={() => scroll(1)}
-            className="absolute top-1/2 -right-2 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white md:flex"
-          >
-            <IconArrowRight />
-          </button>
+        <div className="reveal flex flex-col items-center text-center">
+          <h2 className="font-display text-[32px] md:text-[40px]">Naše priestory</h2>
+          <p className="mt-3 max-w-[520px] text-[15px] leading-relaxed text-white/75">
+            Štyri priestory pod jednou strechou. Kliknite na sálu a uvidíte fotky, kapacitu, vybavenie
+            a môžete rovno poslať dopyt na termín.
+          </p>
         </div>
-        <div className="mt-8 flex justify-center md:justify-end">
-          <BrandButton href="/o-nas" arrow>
-            Všetky sály
-          </BrandButton>
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {halls.map((hall, index) => (
+            <Link
+              key={hall.slug}
+              href={`/prenajom/${hall.slug}`}
+              className="reveal lift group block"
+              style={{ "--reveal-delay": `${index * 0.08}s` } as React.CSSProperties}
+            >
+              <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-white/5">
+                <Photo
+                  src={hall.photos[0]}
+                  alt={hall.name}
+                  className="transition duration-500 group-hover:scale-[1.04]"
+                />
+                {hall.photos.length === 0 ? (
+                  <span className="absolute inset-0 flex items-center justify-center text-[13px] text-white/70">
+                    Fotky pripravujeme
+                  </span>
+                ) : null}
+              </div>
+              <div className="mt-4 flex items-start justify-between gap-3">
+                <div>
+                  <h3 className="font-display text-[22px] leading-tight">{hall.name}</h3>
+                  <p className="mt-1 text-[13px] text-white/60">
+                    {hall.capacity} · {hall.area}
+                  </p>
+                </div>
+                <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/30 transition group-hover:border-brand group-hover:bg-brand">
+                  <IconArrowRight className="h-3.5 w-3.5" />
+                </span>
+              </div>
+              <p className="mt-2 text-[14px] leading-relaxed text-white/80">{hall.short}</p>
+            </Link>
+          ))}
         </div>
       </Container>
     </section>

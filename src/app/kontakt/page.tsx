@@ -13,7 +13,7 @@ export default function ContactPage() {
     <>
       <Container>
         <TitleBlock title="Kontakt" />
-        <div className="grid items-stretch gap-5 pb-10 md:grid-cols-2">
+        <div className="reveal grid items-stretch gap-5 pb-10 md:grid-cols-2">
           <WhiteCard>
             <h2 className="font-display text-[32px] md:text-[36px]">Napíšte nám</h2>
             <div className="mt-5">

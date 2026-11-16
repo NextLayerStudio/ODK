@@ -4,7 +4,7 @@ export type Hall = {
   capacity: string;
   area: string;
   price: string;
-  photoCount: number;
+  photos: string[];
   short: string;
   description: string;
   amenities: string[];
@@ -17,7 +17,7 @@ export const halls: Hall[] = [
     capacity: "400 osôb",
     area: "255 m²",
     price: "Cena na dopyt",
-    photoCount: 13,
+    photos: ["/foto/estradna-sala/01.webp", "/foto/estradna-sala/02.webp", "/foto/estradna-sala/03.webp", "/foto/estradna-sala/04.webp", "/foto/estradna-sala/05.webp", "/foto/estradna-sala/06.webp", "/foto/estradna-sala/07.webp", "/foto/estradna-sala/08.webp", "/foto/estradna-sala/09.webp"],
     short:
       "Ideálny priestor na svadby, plesy, stužkové slávnosti a veľké spoločenské akcie.",
     description:
@@ -41,7 +41,7 @@ export const halls: Hall[] = [
     capacity: "200 osôb",
     area: "180 m²",
     price: "Cena na dopyt",
-    photoCount: 8,
+    photos: [],
     short:
       "Univerzálna sála pre konferencie, školenia, koncerty a stredne veľké oslavy.",
     description:
@@ -61,9 +61,9 @@ export const halls: Hall[] = [
     capacity: "70 osôb",
     area: "80 m²",
     price: "Cena na dopyt",
-    photoCount: 6,
+    photos: ["/foto/saloniky/01.webp", "/foto/saloniky/02.webp", "/foto/saloniky/03.webp"],
     short:
-      "Komorné priestory na pracovné stretnutia, školenia a menšie rodinné oslavy.",
+      "Komorné priestory na rokovania, školenia, krstiny, jubileá aj smútočné posedenia.",
     description:
       "Salóniky ponúkajú intimnejšie prostredie pre pracovné rokovania, školenia, krstiny, narodeniny aj smútočné posedenia. Kapacita do 70 osôb a možnosť prepojenia miestností dávajú priestor na rôzne formáty podujatí.",
     amenities: [
@@ -80,11 +80,11 @@ export const halls: Hall[] = [
     capacity: "110 osôb",
     area: "120 m²",
     price: "Cena na dopyt",
-    photoCount: 10,
+    photos: ["/foto/restauracia-klub/01.webp", "/foto/restauracia-klub/02.webp", "/foto/restauracia-klub/03.webp", "/foto/restauracia-klub/04.webp", "/foto/restauracia-klub/05.webp", "/foto/restauracia-klub/06.webp", "/foto/restauracia-klub/07.webp"],
     short:
       "Reštaurácia s teplou a studenou kuchyňou pre rauty, obedové menu aj slávnostné hostiny.",
     description:
-      "V reštaurácii Klub pripravujeme pestrý výber jedál a špecialít teplej aj studenej kuchyne. Priestor je vhodný na slávnostné hostiny, firemné obedové menu, svadobné hostiny aj každodenné posedenie. Kapacita je približne 110 osôb.",
+      "V Reštaurácii Klub varíme hotové jedlá a obedové menu, pripravíme aj rauty a slávnostné hostiny z teplej a studenej kuchyne. Priestor je vhodný na svadobné hostiny, firemné obedy, rodinné oslavy aj každodenné posedenie. Kapacita je približne 110 osôb.",
     amenities: [
       "teplá a studená kuchyňa",
       "rautové aj servírované menu",
